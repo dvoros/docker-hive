@@ -1,0 +1,6 @@
+<configuration>
+  <property>
+    <name>hive.server2.enable.doAs</name>
+    <value>true</value>
+  </property>
+</configuration>
