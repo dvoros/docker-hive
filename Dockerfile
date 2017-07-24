@@ -19,6 +19,8 @@ ENV PATH $PATH:$HIVE_HOME/bin:$HADOOP_PREFIX/bin
 ADD hive-site.xml $HIVE_HOME/conf/
 ADD core-site.xml.template $HADOOP_PREFIX/etc/hadoop/
 
+ENV HADOOP_CLIENT_OPTS $HADOOP_CLIENT_OPTS -XX:MaxPermSize=256m
+
 COPY bootstrap.sh /etc/bootstrap.sh
 RUN chown root.root /etc/bootstrap.sh
 RUN chmod 700 /etc/bootstrap.sh
