@@ -22,8 +22,4 @@ if [[ $1 == "-d" ]]; then
   exit $?
 fi
 
-if [[ $1 == "-bash" ]]; then
-  /bin/bash
-else
-  $HIVE_HOME/bin/beeline -u jdbc:hive2://
-fi
+/bin/bash

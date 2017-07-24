@@ -10,11 +10,14 @@ RUN $BOOTSTRAP && $HADOOP_PREFIX/bin/hdfs dfsadmin -safemode leave \
   && $HADOOP_PREFIX/bin/hdfs dfs -mkdir -p    /user/hive/warehouse \
   && $HADOOP_PREFIX/bin/hdfs dfs -chmod g+w   /tmp \
   && $HADOOP_PREFIX/bin/hdfs dfs -chmod g+w   /user/hive/warehouse \
-  && $HIVE_HOME/bin/schematool -dbType derby -initSchema
+  && cd $HIVE_HOME \
+  && bin/schematool -dbType derby -initSchema \
+  && rm metastore_db/*.lck
 
 ENV PATH $PATH:$HIVE_HOME/bin:$HADOOP_PREFIX/bin
 
 ADD hive-site.xml $HIVE_HOME/conf/
+ADD core-site.xml.template $HADOOP_PREFIX/etc/hadoop/
 
 COPY bootstrap.sh /etc/bootstrap.sh
 RUN chown root.root /etc/bootstrap.sh
