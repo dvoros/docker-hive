@@ -17,9 +17,11 @@ $HADOOP_PREFIX/sbin/start-yarn.sh
 
 $HADOOP_PREFIX/bin/hdfs dfsadmin -safemode leave
 
+cd $HIVE_HOME
 if [[ $1 == "-d" ]]; then
-  $HIVE_HOME/bin/hiveserver2
+  bin/hiveserver2 > /tmp/root/hive.out 2> /tmp/root/hive.err
   exit $?
 fi
 
+bin/hiveserver2 > /tmp/root/hive.out 2> /tmp/root/hive.err &
 /bin/bash

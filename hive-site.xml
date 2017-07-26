@@ -3,4 +3,20 @@
     <name>hive.server2.enable.doAs</name>
     <value>true</value>
   </property>
+  <property>
+    <name>hive.execution.engine</name>
+    <value>tez</value>
+  </property>
+  <property>
+    <name>hive.jar.directory</name>
+    <value>hdfs:///user/hive</value>
+  </property>
+  <property>
+    <name>set hive.optimize.bucketmapjoin</name>
+    <value>false</value>
+  </property>
+  <property>
+    <name>hive.optimize.bucketmapjoin.sortedmerge</name>
+    <value>false</value>
+  </property>
 </configuration>

@@ -10,6 +10,7 @@ RUN $BOOTSTRAP && $HADOOP_PREFIX/bin/hdfs dfsadmin -safemode leave \
   && $HADOOP_PREFIX/bin/hdfs dfs -mkdir -p    /user/hive/warehouse \
   && $HADOOP_PREFIX/bin/hdfs dfs -chmod g+w   /tmp \
   && $HADOOP_PREFIX/bin/hdfs dfs -chmod g+w   /user/hive/warehouse \
+  && $HADOOP_PREFIX/bin/hdfs dfs -put $HIVE_HOME/lib/hive-exec*.jar /user/hive/hive-exec.jar \
   && cd $HIVE_HOME \
   && bin/schematool -dbType derby -initSchema \
   && rm metastore_db/*.lck
