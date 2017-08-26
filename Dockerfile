@@ -1,4 +1,4 @@
-FROM sequenceiq/hadoop-docker:2.7.1
+FROM dvoros/tez:latest
 
 RUN curl -s http://xenia.sote.hu/ftp/mirrors/www.apache.org/hive/hive-2.3.0/apache-hive-2.3.0-bin.tar.gz | tar -xz -C /usr/local
 RUN cd /usr/local && ln -s apache-hive-2.3.0-bin hive
