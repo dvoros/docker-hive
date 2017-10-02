@@ -17,6 +17,8 @@ $HADOOP_PREFIX/sbin/start-yarn.sh
 
 $HADOOP_PREFIX/bin/hdfs dfsadmin -safemode leave
 
+echo "beeline -u 'jdbc:hive2://localhost:10000' -n root" > ~/.bash_history
+
 cd $HIVE_HOME
 if [[ $1 == "-d" ]]; then
   bin/hiveserver2 > /tmp/root/hive.out 2> /tmp/root/hive.err
