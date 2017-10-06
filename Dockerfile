@@ -1,6 +1,6 @@
-FROM dvoros/tez:latest
+FROM dvoros/tez:0.8.4
 
-RUN curl -s http://xenia.sote.hu/ftp/mirrors/www.apache.org/hive/hive-2.3.0/apache-hive-2.3.0-bin.tar.gz | tar -xz -C /usr/local
+RUN curl -s http://www.eu.apache.org/dist/hive/hive-2.3.0/apache-hive-2.3.0-bin.tar.gz | tar -xz -C /usr/local
 RUN cd /usr/local && ln -s apache-hive-2.3.0-bin hive
 
 ENV HIVE_HOME /usr/local/hive
@@ -9,11 +9,7 @@ RUN $BOOTSTRAP && $HADOOP_PREFIX/bin/hdfs dfsadmin -safemode leave \
   && $HADOOP_PREFIX/bin/hdfs dfs -mkdir       /tmp \
   && $HADOOP_PREFIX/bin/hdfs dfs -mkdir -p    /user/hive/warehouse \
   && $HADOOP_PREFIX/bin/hdfs dfs -chmod g+w   /tmp \
-  && $HADOOP_PREFIX/bin/hdfs dfs -chmod g+w   /user/hive/warehouse \
-  && $HADOOP_PREFIX/bin/hdfs dfs -put $HIVE_HOME/lib/hive-exec*.jar /user/hive/hive-exec.jar \
-  && cd $HIVE_HOME \
-  && bin/schematool -dbType derby -initSchema \
-  && rm metastore_db/*.lck
+  && $HADOOP_PREFIX/bin/hdfs dfs -chmod g+w   /user/hive/warehouse
 
 ENV PATH $PATH:$HIVE_HOME/bin:$HADOOP_PREFIX/bin
 

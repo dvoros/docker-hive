@@ -15,15 +15,17 @@ service sshd start
 $HADOOP_PREFIX/sbin/start-dfs.sh
 $HADOOP_PREFIX/sbin/start-yarn.sh
 
-$HADOOP_PREFIX/bin/hdfs dfsadmin -safemode leave
+# Replace included Hive version with user provided
+[ -d /usr/local/custom-hive ] && cd /usr/local && ln -sfn /usr/local/custom-hive hive && echo "RUNNING CUSTOM VERSION!"
+
+$HADOOP_PREFIX/bin/hdfs dfsadmin -safemode leave \
+  && $HADOOP_PREFIX/bin/hdfs dfs -put $HIVE_HOME/lib/hive-exec*.jar /user/hive/hive-exec.jar \
+  && cd $HIVE_HOME \
+  && rm -rf metastore_db \
+  && bin/schematool -dbType derby -initSchema \
+  && rm metastore_db/*.lck
 
 echo "beeline -u 'jdbc:hive2://localhost:10000' -n root" > ~/.bash_history
 
-cd $HIVE_HOME
-if [[ $1 == "-d" ]]; then
-  bin/hiveserver2 > /tmp/root/hive.out 2> /tmp/root/hive.err
-  exit $?
-fi
-
-bin/hiveserver2 > /tmp/root/hive.out 2> /tmp/root/hive.err &
+$HIVE_HOME/bin/hiveserver2 > /tmp/root/hive.out 2> /tmp/root/hive.err &
 /bin/bash
