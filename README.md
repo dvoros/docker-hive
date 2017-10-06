@@ -24,7 +24,13 @@ You should wait a few seconds for Hiveserver2 to initialize before connecting.
 
 ## Custom Hive version
 
-You can provide your own built Hive version as a volume with:
+Build Hive with:
+
+```
+mvn clean install -Pdist -DskipTests -Dmaven.javadoc.skip=true -DcreateChecksum=true
+```
+
+Provide the built artifacts as a volume:
 
 ```
 docker run -v /path/to/hive/packaging/target/apache-hive-XXX-bin/apache-hive-XXX-bin:/usr/local/custom-hive -it dvoros/hive:latest
