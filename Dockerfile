@@ -6,7 +6,7 @@ RUN cd /usr/local && ln -s apache-hive-2.3.0-bin hive
 ENV HIVE_HOME /usr/local/hive
 
 RUN $BOOTSTRAP && $HADOOP_PREFIX/bin/hdfs dfsadmin -safemode leave \
-  && $HADOOP_PREFIX/bin/hdfs dfs -mkdir       /tmp \
+  && $HADOOP_PREFIX/bin/hdfs dfs -mkdir -p    /tmp \
   && $HADOOP_PREFIX/bin/hdfs dfs -mkdir -p    /user/hive/warehouse \
   && $HADOOP_PREFIX/bin/hdfs dfs -chmod g+w   /tmp \
   && $HADOOP_PREFIX/bin/hdfs dfs -chmod g+w   /user/hive/warehouse
