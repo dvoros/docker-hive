@@ -31,5 +31,6 @@ $HADOOP_PREFIX/bin/hdfs dfsadmin -safemode leave \
 
 echo "beeline -u 'jdbc:hive2://localhost:10000' -n root" > ~/.bash_history
 
+mkdir -p /tmp/root
 $HIVE_HOME/bin/hiveserver2 > /tmp/root/hive.out 2> /tmp/root/hive.err &
 /bin/bash
