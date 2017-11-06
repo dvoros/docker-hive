@@ -1,7 +1,7 @@
 FROM dvoros/tez:0.8.4
 
-RUN curl -s http://www.eu.apache.org/dist/hive/hive-2.3.0/apache-hive-2.3.0-bin.tar.gz | tar -xz -C /usr/local
-RUN cd /usr/local && ln -s apache-hive-2.3.0-bin hive
+RUN curl -s http://www.eu.apache.org/dist/hive/hive-2.3.1/apache-hive-2.3.1-bin.tar.gz | tar -xz -C /usr/local
+RUN cd /usr/local && ln -s apache-hive-2.3.1-bin hive
 
 ENV HIVE_HOME /usr/local/hive
 

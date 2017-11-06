@@ -1,4 +1,4 @@
-# Apache Hive 2.3.0 Docker image
+# Apache Hive 2.3.1 Docker image
 
 [![DockerPulls](https://img.shields.io/docker/pulls/dvoros/hive.svg)](https://registry.hub.docker.com/u/dvoros/hive/)
 [![DockerStars](https://img.shields.io/docker/stars/dvoros/hive.svg)](https://registry.hub.docker.com/u/dvoros/hive/)
