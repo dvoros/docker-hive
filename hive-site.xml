@@ -19,4 +19,8 @@
     <name>hive.optimize.bucketmapjoin.sortedmerge</name>
     <value>false</value>
   </property>
+  <property>
+    <name>hive.server2.logging.operation.enabled</name>
+    <value>false</value>
+  </property>
 </configuration>

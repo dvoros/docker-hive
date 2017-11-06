@@ -13,7 +13,7 @@ RUN $BOOTSTRAP && $HADOOP_PREFIX/bin/hdfs dfsadmin -safemode leave \
 
 ENV PATH $PATH:$HIVE_HOME/bin:$HADOOP_PREFIX/bin
 
-ADD hive-site.xml $HIVE_HOME/conf/
+ADD hive-site.xml /etc/hive/
 ADD core-site.xml.template $HADOOP_PREFIX/etc/hadoop/
 
 ENV HADOOP_CLIENT_OPTS $HADOOP_CLIENT_OPTS -XX:MaxPermSize=256m
