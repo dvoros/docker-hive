@@ -18,6 +18,10 @@ $HADOOP_PREFIX/sbin/start-yarn.sh
 # Replace included Hive version with user provided
 [ -d /usr/local/custom-hive ] && cd /usr/local && ln -sfn /usr/local/custom-hive hive && echo "RUNNING CUSTOM VERSION!"
 
+# Link config to /etc/hive where we've added hive-site.xml
+rm -rf $HIVE_HOME/conf
+ln -s /etc/hive $HIVE_HOME/conf
+
 $HADOOP_PREFIX/bin/hdfs dfsadmin -safemode leave \
   && $HADOOP_PREFIX/bin/hdfs dfs -put $HIVE_HOME/lib/hive-exec*.jar /user/hive/hive-exec.jar \
   && cd $HIVE_HOME \
