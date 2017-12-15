@@ -1,7 +1,7 @@
-FROM dvoros/tez:HDP-2.6.3.0-hive1
+FROM dvoros/tez:HDP-2.6.0.3-hive1
 
-RUN curl -s http://s3.amazonaws.com/public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.6.3.0/tars/hive/apache-hive-1.2.1000.2.6.3.0-235-bin.tar.gz | tar -xz -C /usr/local
-RUN cd /usr/local && ln -s apache-hive-1.2.1000.2.6.3.0-235-bin hive
+RUN curl -s http://s3.amazonaws.com/public-repo-1.hortonworks.com/HDP/centos6/2.x/updates/2.6.0.3/tars/hive/apache-hive-1.2.1000.2.6.0.3-8-bin.tar.gz | tar -xz -C /usr/local
+RUN cd /usr/local && ln -s apache-hive-1.2.1000.2.6.0.3-8-bin hive
 
 ENV HIVE_HOME /usr/local/hive
 
