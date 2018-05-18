@@ -23,4 +23,13 @@
     <name>hive.server2.logging.operation.enabled</name>
     <value>false</value>
   </property>
+  <!-- Derby Metastore DB -->
+  <property>
+    <name>javax.jdo.option.ConnectionURL</name>
+    <value>jdbc:derby://localhost:1527/metastore_db;create=true</value>
+  </property>
+  <property>
+    <name>javax.jdo.option.ConnectionDriverName</name>
+    <value>org.apache.derby.jdbc.ClientDriver</value>
+  </property>
 </configuration>

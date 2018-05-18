@@ -2,16 +2,20 @@ FROM dvoros/tez:0.8.5
 
 RUN curl -s http://www.eu.apache.org/dist/hive/hive-2.3.3/apache-hive-2.3.3-bin.tar.gz | tar -xz -C /usr/local
 RUN cd /usr/local && ln -s apache-hive-2.3.3-bin hive
-
 ENV HIVE_HOME /usr/local/hive
+
+RUN curl -s https://www-eu.apache.org/dist/db/derby/db-derby-10.14.2.0/db-derby-10.14.2.0-bin.tar.gz | tar -xz -C /usr/local
+RUN ln -s /usr/local/db-derby-10.14.2.0-bin /usr/local/derby
+ENV DERBY_HOME /usr/local/derby
+ENV DERBY_INSTALL /usr/local/derby
+
+ENV PATH $PATH:$HIVE_HOME/bin:$DERBY_HOME/bin
 
 RUN $BOOTSTRAP && hdfs dfsadmin -safemode leave \
   && hdfs dfs -mkdir -p    /tmp \
   && hdfs dfs -mkdir -p    /user/hive/warehouse \
   && hdfs dfs -chmod g+w   /tmp \
   && hdfs dfs -chmod g+w   /user/hive/warehouse
-
-ENV PATH $PATH:$HIVE_HOME/bin
 
 ADD hive-site.xml /etc/hive/
 ADD core-site.xml.template $HADOOP_HOME/etc/hadoop/
