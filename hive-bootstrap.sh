@@ -19,7 +19,7 @@ $HADOOP_HOME/bin/hdfs dfsadmin -safemode leave \
   && $HADOOP_HOME/bin/hdfs dfs -put $HIVE_HOME/lib/hive-exec*.jar /user/hive/hive-exec.jar \
   && schematool -dbType derby -initSchema
 
-echo "beeline -u 'jdbc:hive2://localhost:10000' -n root" > ~/.bash_history
+echo "beeline" > ~/.bash_history
 
 mkdir -p /tmp/root
 $HIVE_HOME/bin/hiveserver2 > /tmp/root/hive.out 2> /tmp/root/hive.err &

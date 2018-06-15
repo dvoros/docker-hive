@@ -18,6 +18,7 @@ RUN $BOOTSTRAP && hdfs dfsadmin -safemode leave \
   && hdfs dfs -chmod g+w   /user/hive/warehouse
 
 ADD hive-site.xml /etc/hive/
+ADD beeline-site.xml /etc/hive/
 ADD core-site.xml.template $HADOOP_HOME/etc/hadoop/
 
 ENV HADOOP_CLIENT_OPTS $HADOOP_CLIENT_OPTS -XX:MaxPermSize=256m

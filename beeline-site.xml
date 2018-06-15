@@ -1,0 +1,13 @@
+<configuration  xmlns:xi="http://www.w3.org/2001/XInclude">
+
+  <property>
+    <name>beeline.hs2.jdbc.url.container</name>
+    <value>jdbc:hive2://localhost:10000/default;user=root;password=root</value>
+  </property>
+
+  <property>
+    <name>beeline.hs2.jdbc.url.default</name>
+    <value>container</value>
+  </property>
+
+</configuration>
