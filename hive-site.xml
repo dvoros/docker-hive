@@ -8,8 +8,16 @@
     <value>tez</value>
   </property>
   <property>
+    <name>hive.tez.container.size</name>
+    <value>128</value>
+  </property>
+  <property>
     <name>hive.jar.directory</name>
     <value>hdfs:///user/hive</value>
+  </property>
+  <property>
+    <name>hive.metastore.warehouse.external.dir</name>
+    <value>/user/hive/external</value>
   </property>
   <property>
     <name>set hive.optimize.bucketmapjoin</name>
