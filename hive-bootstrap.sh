@@ -18,7 +18,7 @@ ln -s /etc/hive $HIVE_HOME/conf
 $HADOOP_HOME/bin/hdfs dfsadmin -safemode leave \
   && $HADOOP_HOME/bin/hdfs dfs -put $HIVE_HOME/lib/hive-exec*.jar /user/hive/hive-exec.jar \
   && schematool -initSchema -dbType derby \
-  && schematool -initSchema -dbType hive -metaDbType derby --verbose
+  && schematool -initSchema -dbType hive -metaDbType derby # This will fail at view creation, due to HIVE-20010
 
 echo "beeline -u 'jdbc:hive2://localhost:10000' -n root" > ~/.bash_history
 
